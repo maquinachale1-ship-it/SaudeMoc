@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artigos — SaúdeMoç</title>
+</head>
+<body>
+
+<div class="imagem-topo">
+  <img src="Imagens/Artigo.jpeg" alt="Artigos de Saúde">
+  <div class="sobreposicao">
+    <h1>📰 Artigos de Saúde Pública</h1>
+    <p>Informação científica, acessível e actualizada para os moçambicanos</p>
+  </div>
+</div>
+
+<header>
+  <div class="logo">🏥 SaúdeMoç</div>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="sobre.html">Sobre Nós</a>
+    <a href="artigos.html" class="ativo">Artigos</a>
+    <a href="malaria.html">Malária</a>
+    <a href="colera.html">Cólera</a>
+    <a href="nutricao.html">Nutrição</a>
+    <a href="contactos.html">Contactos</a>
+  </nav>
+</header>
+
+<section class="titulo-pagina">
+  <h1>Todos os <span>Artigos</span></h1>
+  <p>Escolha um tema e aprofunde o seu conhecimento sobre saúde pública em Moçambique.</p>
+</section>
+
+<!-- FILTROS -->
+<section class="filtros-secao">
+  <div class="filtros">
+    <button class="filtro-btn ativo" onclick="filtrar('todos', this)">Todos</button>
+    <button class="filtro-btn" onclick="filtrar('malaria', this)">🦟 Malária</button>
+    <button class="filtro-btn" onclick="filtrar('colera', this)">💧 Cólera</button>
+    <button class="filtro-btn" onclick="filtrar('nutricao', this)">🌱 Nutrição</button>
+  </div>
+</section>
+
+<!-- LISTA DE ARTIGOS -->
+<section class="artigos-secao">
+  <div class="artigos-layout">
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="artigos-lista" id="artigos-lista">
+
+      <!-- ARTIGO 1 -->
+      <div class="artigo-card" data-cat="malaria">
+        <div class="artigo-img" style="background:linear-gradient(135deg,#004a2b,#00a85a);">
+          <img src="https://images.unsplash.com/photo-1584118624012-df056829fbd0?w=500&q=70" alt="Malária">
+        </div>
+        <div class="artigo-corpo">
+          <span class="tag tag-verde">🦟 Malária</span>
+          <h2>Malária em Moçambique: Causas, Sintomas, Prevenção e Tratamento</h2>
+          <p>Com mais de 8 milhões de casos anuais, a malária é a principal causa de mortalidade em Moçambique. Este artigo explica o ciclo da doença, os grupos de maior risco — especialmente crianças menores de 5 anos e mulheres grávidas — e todas as medidas de prevenção disponíveis, desde as redes mosquiteiras aos medicamentos profiláticos.</p>
+          <div class="artigo-meta">
+            <span>📅 10 de Junho de 2025</span>
+            <span>⏱ 8 min leitura</span>
+            <span>✍️ Dra. Amélia Cossa</span>
+          </div>
+          <a href="malaria.html" class="botao">Ler Artigo Completo →</a>
+        </div>
+      </div>
+
+      <!-- ARTIGO 2 -->
+      <div class="artigo-card" data-cat="colera">
+        <div class="artigo-img" style="background:linear-gradient(135deg,#0c4a6e,#0ea5b0);">
+          <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=500&q=70" alt="Cólera">
+        </div>
+        <div class="artigo-corpo">
+          <span class="tag tag-azul">💧 Cólera</span>
+          <h2>Cólera: Como a Água Contaminada Ameaça Vidas e Como Nos Proteger</h2>
+          <p>A cólera é uma doença evitável que ainda afecta milhares de moçambicanos a cada ano, principalmente após cheias e em zonas urbanas densas. Aprenda a reconhecer os sinais precoces, como preparar a Solução de Reidratação Oral (SRO) em casa e as cinco chaves da OMS para alimentos mais seguros.</p>
+          <div class="artigo-meta">
+            <span>📅 2 de Maio de 2025</span>
+            <span>⏱ 7 min leitura</span>
+            <span>✍️ Dr. João Tembe</span>
+          </div>
+          <a href="colera.html" class="botao">Ler Artigo Completo →</a>
+        </div>
+      </div>
+
+      <!-- ARTIGO 3 -->
+      <div class="artigo-card" data-cat="nutricao">
+        <div class="artigo-img" style="background:linear-gradient(135deg,#7c3205,#d97706);">
+          <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=500&q=70" alt="Nutrição">
+        </div>
+        <div class="artigo-corpo">
+          <span class="tag tag-laranja">🌱 Nutrição</span>
+          <h2>Os Primeiros 1000 Dias: Como a Nutrição Define o Futuro das Nossas Crianças</h2>
+          <p>Da concepção até aos dois anos de vida, o cérebro e o corpo de uma criança desenvolvem-se a uma velocidade incrível. Uma nutrição inadequada neste período pode causar danos irreversíveis ao desenvolvimento cognitivo e físico. Descubra o papel da amamentação exclusiva e como combater a desnutrição aguda severa.</p>
+          <div class="artigo-meta">
+            <span>📅 15 de Abril de 2025</span>
+            <span>⏱ 10 min leitura</span>
+            <span>✍️ Msc. Fátima Macamo</span>
+          </div>
+          <a href="nutricao.html" class="botao">Ler Artigo Completo →</a>
+        </div>
+      </div>
+
+    </div><!-- fim artigos-lista -->
+
+    <!-- BARRA LATERAL -->
+    <aside class="sidebar">
+
+      <div class="widget">
+        <h4>📌 Mais Lidos</h4>
+        <a href="malaria.html" class="side-link"><span class="num">1</span> Malária: Prevenção e Tratamento</a>
+        <a href="colera.html" class="side-link"><span class="num">2</span> Cólera: Água Limpa Salva Vidas</a>
+        <a href="nutricao.html" class="side-link"><span class="num">3</span> Primeiros 1000 Dias de Vida</a>
+      </div>
+
+      <div class="widget">
+        <h4>🏷️ Temas</h4>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;">
+          <span class="tema-tag">🦟 Malária</span>
+          <span class="tema-tag">💧 Cólera</span>
+          <span class="tema-tag">🌱 Nutrição</span>
+          <span class="tema-tag">💉 Vacinação</span>
+          <span class="tema-tag">🧼 Higiene</span>
+          <span class="tema-tag">🏥 Saúde Materna</span>
+        </div>
+      </div>
+
+      <div class="widget widget-alerta">
+        <h4>🔔 Alerta de Saúde</h4>
+        <p>Época de chuvas aumenta risco de malária e cólera. Redobre as precauções!</p>
+        <a href="malaria.html" class="botao" style="margin-top:12px;font-size:0.85rem;padding:10px 18px;">Ver Dicas →</a>
+      </div>
+
+      <div class="widget">
+        <h4>📞 Linha de Saúde</h4>
+        <p style="margin-bottom:12px;font-size:0.9rem;color:#555;">Em caso de emergência médica:</p>
+        <div style="background:#f0faf4;border-radius:12px;padding:16px;text-align:center;">
+          <div style="font-size:2rem;font-weight:900;color:#006B3F;">1492</div>
+          <div style="font-size:0.75rem;color:#888;text-transform:uppercase;letter-spacing:1px;">Linha Nacional de Saúde</div>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div><h3>🏥 SaúdeMoç</h3><p>Blog dedicado à promoção da saúde pública em Moçambique. Gratuito para todos.</p></div>
+    <div><h4>Páginas</h4><ul><li><a href="index.html">→ Início</a></li><li><a href="sobre.html">→ Sobre Nós</a></li><li><a href="artigos.html">→ Artigos</a></li><li><a href="contactos.html">→ Contactos</a></li></ul></div>
+    <div><h4>Artigos</h4><ul><li><a href="malaria.html">→ Malária</a></li><li><a href="colera.html">→ Cólera</a></li><li><a href="nutricao.html">→ Nutrição</a></li></ul></div>
+    <div><h4>Contacto</h4><p>📍 Nampula, Moçambique</p><p>📞 +258 21 000 000</p><p>✉️ info@saudemos.co.mz</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 SaúdeMoç — Todos os direitos reservados. Moçambique 🇲🇿</p></div>
+</footer>
+
+<script>
+function filtrar(cat, btn) {
+  document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('ativo'));
+  btn.classList.add('ativo');
+  document.querySelectorAll('.artigo-card').forEach(card => {
+    if (cat === 'todos' || card.dataset.cat === cat) {
+      card.style.display = 'grid';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+
+<style>
+img {
+  max-width: 600px;
+  height: auto;
+  display: block;
+  margin: 10px auto;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{background:#f4f6f9;color:#333;line-height:1.7;}
+.imagem-topo{position:relative;width:100%;height:280px;overflow:hidden;}
+.imagem-topo img{width:100%;height:100%;object-fit:cover;display:block;}
+.sobreposicao{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.1),rgba(0,40,20,0.78));display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:2rem;text-align:center;}
+.sobreposicao h1{color:#fff;font-size:2.2rem;font-weight:800;margin-bottom:8px;}
+.sobreposicao p{color:rgba(255,255,255,0.88);font-size:1rem;}
+header{background:linear-gradient(135deg,#006B3F,#004a2b);padding:18px 50px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;box-shadow:0 4px 15px rgba(0,0,0,0.2);position:sticky;top:0;z-index:100;}
+.logo{font-size:1.4rem;font-weight:800;color:#fff;}
+nav a{color:rgba(255,255,255,0.85);text-decoration:none;margin-left:16px;font-weight:600;font-size:0.9rem;padding:6px 14px;border-radius:20px;transition:0.3s;}
+nav a:hover,nav a.ativo{color:#fff;background:rgba(212,175,55,0.25);border:1px solid rgba(212,175,55,0.5);}
+.titulo-pagina{background:linear-gradient(135deg,#004a2b,#006B3F);text-align:center;padding:50px 10%;color:#fff;}
+.titulo-pagina h1{font-size:2.2rem;font-weight:800;margin-bottom:12px;}
+.titulo-pagina span{color:#D4AF37;}
+.titulo-pagina p{font-size:1.05rem;opacity:0.85;}
+.filtros-secao{padding:24px 8%;background:#fff;border-bottom:1px solid #eee;}
+.filtros{display:flex;gap:10px;flex-wrap:wrap;}
+.filtro-btn{background:#fff;border:2px solid #e0e0e0;color:#555;padding:8px 20px;border-radius:25px;cursor:pointer;font-size:0.88rem;font-weight:600;transition:0.3s;}
+.filtro-btn:hover,.filtro-btn.ativo{background:#006B3F;color:#fff;border-color:#006B3F;}
+.artigos-secao{padding:50px 8%;}
+.artigos-layout{display:grid;grid-template-columns:1fr 320px;gap:40px;align-items:start;}
+.artigo-card{display:grid;grid-template-columns:280px 1fr;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 6px 24px rgba(0,107,63,0.1);margin-bottom:28px;transition:0.35s;}
+.artigo-card:hover{transform:translateY(-5px);box-shadow:0 18px 50px rgba(0,107,63,0.18);}
+.artigo-img{overflow:hidden;}
+.artigo-img img{width:100%;height:100%;object-fit:cover;display:block;min-height:200px;}
+.artigo-corpo{padding:30px;}
+.tag{display:inline-block;padding:4px 14px;border-radius:20px;font-size:0.75rem;font-weight:700;letter-spacing:1px;margin-bottom:10px;}
+.tag-verde{background:rgba(0,107,63,0.1);color:#006B3F;}
+.tag-azul{background:rgba(14,165,176,0.1);color:#0ea5b0;}
+.tag-laranja{background:rgba(217,119,6,0.1);color:#d97706;}
+.artigo-corpo h2{font-size:1.25rem;color:#004a2b;font-weight:800;margin-bottom:12px;line-height:1.35;}
+.artigo-corpo p{font-size:0.92rem;color:#666;line-height:1.75;margin-bottom:16px;}
+.artigo-meta{display:flex;gap:16px;font-size:0.78rem;color:#999;margin-bottom:18px;flex-wrap:wrap;}
+.botao{background:#D4AF37;color:#1a3a00;padding:11px 24px;border:none;border-radius:25px;text-decoration:none;cursor:pointer;font-size:0.9rem;font-weight:700;transition:0.3s;display:inline-block;}
+.botao:hover{background:#f0d060;transform:translateY(-2px);}
+/* sidebar */
+.widget{background:#fff;border-radius:18px;padding:24px;box-shadow:0 4px 18px rgba(0,107,63,0.08);margin-bottom:24px;}
+.widget h4{font-size:1rem;color:#004a2b;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #f0faf4;}
+.side-link{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f5f5f5;text-decoration:none;color:#555;font-size:0.88rem;transition:0.3s;}
+.side-link:hover{color:#006B3F;padding-left:4px;}
+.side-link .num{width:26px;height:26px;background:#f0faf4;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;color:#006B3F;flex-shrink:0;}
+.tema-tag{background:#f0faf4;color:#006B3F;padding:5px 12px;border-radius:15px;font-size:0.78rem;font-weight:600;}
+.widget-alerta{background:linear-gradient(135deg,#004a2b,#006B3F);border:none;}
+.widget-alerta h4{color:#D4AF37;border-bottom-color:rgba(212,175,55,0.2);}
+.widget-alerta p{color:rgba(255,255,255,0.8);font-size:0.88rem;line-height:1.6;}
+footer{background:linear-gradient(135deg,#001a0f,#002d1a);color:#fff;padding:60px 8% 20px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(212,175,55,0.2);}
+.footer-grid h3{font-size:1.3rem;color:#fff;margin-bottom:12px;}
+.footer-grid h4{font-size:1rem;color:#D4AF37;margin-bottom:14px;}
+.footer-grid p{color:rgba(255,255,255,0.6);font-size:0.88rem;margin-bottom:6px;}
+.footer-grid ul{list-style:none;}
+.footer-grid ul li a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.88rem;transition:0.3s;display:block;margin-bottom:8px;}
+.footer-grid ul li a:hover{color:#D4AF37;}
+.footer-bottom{text-align:center;padding-top:20px;color:rgba(255,255,255,0.4);font-size:0.85rem;}
+@media(max-width:900px){.artigos-layout{grid-template-columns:1fr;}.artigo-card{grid-template-columns:1fr;}}
+@media(max-width:768px){header{flex-direction:column;text-align:center;padding:16px 20px;}nav{margin-top:12px;}nav a{margin:4px 6px;font-size:0.82rem;}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;}}
+</style>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contactos — SaúdeMoç</title>
+</head>
+<body>
+
+<div class="imagem-topo">
+  <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1400&q=80" alt="Contactos">
+  <div class="sobreposicao">
+    <h1>📬 Fale Connosco</h1>
+    <p>Tem dúvidas, sugestões ou quer colaborar? Estamos aqui para si.</p>
+  </div>
+</div>
+
+<header>
+  <div class="logo">🏥 SaúdeMoç</div>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="sobre.html">Sobre Nós</a>
+    <a href="artigos.html">Artigos</a>
+    <a href="malaria.html">Malária</a>
+    <a href="colera.html">Cólera</a>
+    <a href="nutricao.html">Nutrição</a>
+    <a href="contactos.html" class="ativo">Contactos</a>
+  </nav>
+</header>
+
+<section class="titulo-pagina">
+  <h1>Contacte a <span>Nossa Equipa</span></h1>
+  <p>Estamos disponíveis para esclarecer dúvidas, receber sugestões de artigos e aceitar colaborações.</p>
+</section>
+
+<!-- INFOS + FORMULÁRIO -->
+<section class="contacto-secao">
+  <div class="contacto-grid">
+
+    <!-- INFORMAÇÕES -->
+    <div class="info-lado">
+      <h3>Estamos Sempre Disponíveis</h3>
+      <p>A equipa do SaúdeMoç está pronta para esclarecer dúvidas sobre saúde pública, receber sugestões de temas, aceitar colaborações de profissionais de saúde e apoiar instituições que queiram divulgar informação de saúde.</p>
+
+      <div class="info-item">
+        <div class="info-icone">📍</div>
+        <div>
+          <strong>Endereço</strong>
+          <p>Av. 25 de Setembro, nº 1234<br>Nampula, Moçambique</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icone">📞</div>
+        <div>
+          <strong>Telefone</strong>
+          <p>+258 21 000 000 (Sede)<br>+258 84 000 0000 (WhatsApp)</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icone">✉️</div>
+        <div>
+          <strong>Email</strong>
+          <p>info@saudemos.co.mz<br>redaccao@saudemos.co.mz</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icone">🕐</div>
+        <div>
+          <strong>Horário de Atendimento</strong>
+          <p>Segunda a Sexta: 08h00 – 17h00<br>Sábado: 08h00 – 12h00</p>
+        </div>
+      </div>
+
+      <!-- EMERGÊNCIA -->
+      <div class="emergencia-box">
+        <div style="font-size:2rem;margin-bottom:8px;">🚨</div>
+        <h4>Emergência de Saúde</h4>
+        <p>Em caso de emergência médica, não aguarde — ligue imediatamente:</p>
+        <div class="numero-emergencia">1492</div>
+        <p style="font-size:0.82rem;opacity:0.8;">Linha Nacional de Saúde — Gratuita 24h</p>
+      </div>
+
+      <!-- REDES SOCIAIS -->
+      <div class="redes-box">
+        <h4>Siga-nos nas Redes Sociais</h4>
+        <div class="redes-lista">
+          <a href="#" class="rede-btn">📘 Facebook</a>
+          <a href="#" class="rede-btn">🐦 Twitter/X</a>
+          <a href="#" class="rede-btn">📷 Instagram</a>
+          <a href="#" class="rede-btn">▶️ YouTube</a>
+          <a href="#" class="rede-btn">📱 WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMULÁRIO -->
+    <div class="formulario-lado">
+      <div class="form-card" id="form-area">
+        <h3>Envie uma Mensagem</h3>
+        <p>Preencha o formulário e responderemos em até 24 horas.</p>
+
+        <form id="formContacto" onsubmit="enviarFormulario(event)">
+
+          <div class="form-row">
+            <div class="form-grupo">
+              <label>Nome Completo *</label>
+              <input type="text" id="nome" placeholder="O seu nome completo" required>
+            </div>
+            <div class="form-grupo">
+              <label>Email *</label>
+              <input type="email" id="email" placeholder="email@exemplo.com" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-grupo">
+              <label>Telefone</label>
+              <input type="tel" id="telefone" placeholder="+258 84 000 0000">
+            </div>
+            <div class="form-grupo">
+              <label>Província</label>
+              <select id="provincia">
+                <option value="">Seleccione...</option>
+                <option>Cabo Delgado</option>
+                <option>Gaza</option>
+                <option>Inhambane</option>
+                <option>Manica</option>
+                <option>Maputo Cidade</option>
+                <option>Maputo Província</option>
+                <option>Nampula</option>
+                <option>Niassa</option>
+                <option>Sofala</option>
+                <option>Tete</option>
+                <option>Zambézia</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-grupo">
+            <label>Assunto</label>
+            <select id="assunto">
+              <option value="">Seleccione o assunto...</option>
+              <option>❓ Dúvida de Saúde</option>
+              <option>🤝 Proposta de Colaboração</option>
+              <option>💡 Sugestão de Artigo</option>
+              <option>🏢 Parceria Institucional</option>
+              <option>📝 Outro</option>
+            </select>
+          </div>
+
+          <div class="form-grupo">
+            <label>Mensagem *</label>
+            <textarea id="mensagem" rows="5" placeholder="Escreva a sua mensagem aqui..." required></textarea>
+          </div>
+
+          <div class="form-grupo" style="display:flex;align-items:center;gap:10px;">
+            <input type="checkbox" id="aceito" required style="width:auto;accent-color:#006B3F;transform:scale(1.3);">
+            <label for="aceito" style="font-weight:normal;font-size:0.85rem;color:#666;">Aceito que os meus dados sejam usados para responder à minha mensagem.</label>
+          </div>
+
+          <button type="submit" class="botao-submit">📨 Enviar Mensagem</button>
+        </form>
+
+        <!-- MENSAGEM DE SUCESSO (oculta) -->
+        <div id="sucesso-msg" style="display:none;text-align:center;padding:40px 20px;">
+          <div style="font-size:4rem;margin-bottom:16px;">✅</div>
+          <h3 style="color:#006B3F;margin-bottom:8px;">Mensagem Enviada!</h3>
+          <p style="color:#555;">Obrigado pelo contacto! A nossa equipa responderá em breve.</p>
+          <button onclick="document.getElementById('sucesso-msg').style.display='none';document.getElementById('formContacto').style.display='block';" class="botao" style="margin-top:20px;">Enviar outra mensagem</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-secao">
+  <h2 class="titulo-secao">❓ Perguntas Frequentes</h2>
+  <p class="subtitulo-secao">Respostas às dúvidas mais comuns sobre o SaúdeMoç</p>
+
+  <div class="faq-lista">
+    <details class="faq-item">
+      <summary>O blog SaúdeMoç é gratuito?</summary>
+      <p>Sim, todo o conteúdo do SaúdeMoç é completamente gratuito e de acesso livre para todos os moçambicanos. Acreditamos que a informação de saúde deve ser um bem público acessível a todos, independentemente do nível socioeconómico.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Os artigos são escritos por profissionais de saúde?</summary>
+      <p>Sim. Todos os artigos são escritos ou revisados por profissionais de saúde qualificados — médicos, enfermeiros, nutricionistas e investigadores — garantindo rigor científico e informação actualizada, adaptada à realidade de Moçambique.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Posso sugerir temas para novos artigos?</summary>
+      <p>Com certeza! Valorizamos muito as sugestões da comunidade. Use o formulário acima ou envie um email para redaccao@saudemos.co.mz com o tema que gostaria de ver abordado. Respondemos a todas as sugestões.</p>
+    </details>
+    <details class="faq-item">
+      <summary>O blog substitui a consulta médica?</summary>
+      <p>Não. O SaúdeMoç é uma plataforma de informação e educação em saúde pública. Em caso de doença ou dúvida médica, consulte sempre um profissional de saúde ou dirija-se ao centro de saúde mais próximo.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Posso partilhar os artigos com a minha comunidade?</summary>
+      <p>Sim, e encorajamos a partilha! Quanto mais pessoas tiverem acesso a informação de saúde fidedigna, mais vidas podemos salvar. Partilhe nas redes sociais, grupos de WhatsApp e com familiares e amigos.</p>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div><h3>🏥 SaúdeMoç</h3><p>Blog dedicado à saúde pública em Moçambique. Gratuito para todos.</p></div>
+    <div><h4>Páginas</h4><ul><li><a href="index.html">→ Início</a></li><li><a href="sobre.html">→ Sobre Nós</a></li><li><a href="artigos.html">→ Artigos</a></li><li><a href="contactos.html">→ Contactos</a></li></ul></div>
+    <div><h4>Artigos</h4><ul><li><a href="malaria.html">→ Malária</a></li><li><a href="colera.html">→ Cólera</a></li><li><a href="nutricao.html">→ Nutrição</a></li></ul></div>
+    <div><h4>Contacto</h4><p>📍 Nampula, Moçambique</p><p>📞 +258 21 000 000</p><p>✉️ info@saudemos.co.mz</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 SaúdeMoç — Todos os direitos reservados. Moçambique 🇲🇿</p></div>
+</footer>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDvghmOO4iX6SXHDK4TGOfal8flLrvtGW0",
+  authDomain: "saudemoc-2a45e.firebaseapp.com",
+  projectId: "saudemoc-2a45e",
+  storageBucket: "saudemoc-2a45e.firebasestorage.app",
+  messagingSenderId: "337640637165",
+  appId: "1:337640637165:web:ccf986eb5582f05fa002e4"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.enviarFormulario = async function(e) {
+  e.preventDefault();
+  var nome = document.getElementById('nome').value;
+  var email = document.getElementById('email').value;
+  var mensagem = document.getElementById('mensagem').value;
+  if (!nome || !email || !mensagem) {
+    alert('Por favor preencha todos os campos obrigatórios (*).');
+    return;
+  }
+
+  var botao = document.querySelector('.botao-submit');
+  if (botao) { botao.disabled = true; botao.textContent = 'A enviar...'; }
+
+  try {
+    await addDoc(collection(db, "contactos"), {
+      nome: nome,
+      email: email,
+      telefone: document.getElementById('telefone').value,
+      provincia: document.getElementById('provincia').value,
+      assunto: document.getElementById('assunto').value,
+      mensagem: mensagem,
+      lido: false,
+      criadoEm: serverTimestamp()
+    });
+    document.getElementById('formContacto').style.display = 'none';
+    document.getElementById('sucesso-msg').style.display = 'block';
+    document.getElementById('formContacto').reset();
+  } catch (err) {
+    alert('Ocorreu um erro ao enviar. Tente novamente. (' + err.message + ')');
+  } finally {
+    if (botao) { botao.disabled = false; botao.textContent = 'Enviar Mensagem'; }
+  }
+}
+</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{background:#f4f6f9;color:#333;line-height:1.7;}
+.imagem-topo{position:relative;width:100%;height:280px;overflow:hidden;}
+.imagem-topo img{width:100%;height:100%;object-fit:cover;display:block;}
+.sobreposicao{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.1),rgba(0,40,20,0.78));display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:2rem;text-align:center;}
+.sobreposicao h1{color:#fff;font-size:2.2rem;font-weight:800;margin-bottom:8px;}
+.sobreposicao p{color:rgba(255,255,255,0.88);font-size:1rem;}
+header{background:linear-gradient(135deg,#006B3F,#004a2b);padding:18px 50px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;box-shadow:0 4px 15px rgba(0,0,0,0.2);position:sticky;top:0;z-index:100;}
+.logo{font-size:1.4rem;font-weight:800;color:#fff;}
+nav a{color:rgba(255,255,255,0.85);text-decoration:none;margin-left:16px;font-weight:600;font-size:0.9rem;padding:6px 14px;border-radius:20px;transition:0.3s;}
+nav a:hover,nav a.ativo{color:#fff;background:rgba(212,175,55,0.25);border:1px solid rgba(212,175,55,0.5);}
+.titulo-pagina{background:linear-gradient(135deg,#004a2b,#006B3F);text-align:center;padding:50px 10%;color:#fff;}
+.titulo-pagina h1{font-size:2.2rem;font-weight:800;margin-bottom:12px;}
+.titulo-pagina span{color:#D4AF37;}
+.titulo-pagina p{font-size:1.05rem;opacity:0.85;max-width:650px;margin:0 auto;}
+/* Contacto */
+.contacto-secao{padding:60px 8%;}
+.contacto-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:50px;align-items:start;}
+.info-lado h3{font-size:1.5rem;color:#004a2b;font-weight:800;margin-bottom:14px;}
+.info-lado>p{color:#666;font-size:0.95rem;line-height:1.75;margin-bottom:28px;}
+.info-item{display:flex;align-items:flex-start;gap:16px;margin-bottom:22px;}
+.info-icone{width:46px;height:46px;background:linear-gradient(135deg,#006B3F,#00a85a);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.info-item strong{display:block;color:#004a2b;font-size:0.9rem;font-weight:800;margin-bottom:4px;}
+.info-item p{color:#666;font-size:0.88rem;line-height:1.55;margin:0;}
+.emergencia-box{background:linear-gradient(135deg,#004a2b,#006B3F);border-radius:20px;padding:28px;text-align:center;color:#fff;margin-top:28px;}
+.emergencia-box h4{font-size:1.1rem;color:#D4AF37;margin-bottom:8px;}
+.emergencia-box p{font-size:0.88rem;opacity:0.85;margin-bottom:12px;}
+.numero-emergencia{font-size:3.2rem;font-weight:900;color:#D4AF37;background:rgba(255,255,255,0.1);display:inline-block;padding:12px 40px;border-radius:12px;margin:8px 0;border:2px solid rgba(212,175,55,0.3);}
+.redes-box{margin-top:24px;}
+.redes-box h4{font-size:1rem;color:#004a2b;font-weight:800;margin-bottom:12px;}
+.redes-lista{display:flex;flex-wrap:wrap;gap:8px;}
+.rede-btn{background:#fff;border:2px solid #e0e0e0;color:#555;padding:8px 16px;border-radius:25px;text-decoration:none;font-size:0.82rem;font-weight:600;transition:0.3s;}
+.rede-btn:hover{background:#006B3F;color:#fff;border-color:#006B3F;}
+/* Form */
+.form-card{background:#fff;border-radius:24px;padding:40px;box-shadow:0 12px 50px rgba(0,107,63,0.12);border:1px solid rgba(0,107,63,0.08);}
+.form-card h3{font-size:1.4rem;color:#004a2b;font-weight:800;margin-bottom:6px;}
+.form-card>p{color:#888;font-size:0.9rem;margin-bottom:26px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.form-grupo{margin-bottom:20px;}
+.form-grupo label{display:block;font-size:0.82rem;font-weight:800;color:#004a2b;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;}
+.form-grupo input,.form-grupo select,.form-grupo textarea{width:100%;padding:13px 16px;border:2px solid #e8f5ed;border-radius:12px;font-family:'Segoe UI',sans-serif;font-size:0.95rem;color:#333;background:#fafffe;transition:0.3s;outline:none;}
+.form-grupo input:focus,.form-grupo select:focus,.form-grupo textarea:focus{border-color:#006B3F;box-shadow:0 0 0 4px rgba(0,107,63,0.1);}
+.botao-submit{background:linear-gradient(135deg,#006B3F,#004a2b);color:#fff;border:none;padding:16px;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;width:100%;transition:0.3s;letter-spacing:0.5px;}
+.botao-submit:hover{background:linear-gradient(135deg,#004a2b,#003520);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,107,63,0.3);}
+.botao{background:#D4AF37;color:#1a3a00;padding:12px 26px;border:none;border-radius:25px;text-decoration:none;cursor:pointer;font-size:0.95rem;font-weight:700;transition:0.3s;display:inline-block;}
+.botao:hover{background:#f0d060;}
+/* FAQ */
+.faq-secao{padding:60px 8%;background:#fff;}
+.titulo-secao{font-size:1.8rem;color:#004a2b;text-align:center;margin-bottom:10px;font-weight:800;}
+.subtitulo-secao{text-align:center;color:#666;font-size:1rem;margin-bottom:40px;}
+.faq-lista{max-width:800px;margin:0 auto;}
+.faq-item{background:#f4f6f9;border-radius:16px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,107,63,0.06);}
+.faq-item summary{padding:20px 24px;cursor:pointer;font-weight:700;color:#004a2b;font-size:0.98rem;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+.faq-item summary::after{content:'+';color:#006B3F;font-size:1.4rem;font-weight:300;}
+.faq-item[open] summary::after{content:'−';}
+.faq-item p{padding:0 24px 20px;color:#666;font-size:0.92rem;line-height:1.75;border-top:1px solid #e8f5ed;padding-top:16px;}
+/* Footer */
+footer{background:linear-gradient(135deg,#001a0f,#002d1a);color:#fff;padding:60px 8% 20px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(212,175,55,0.2);}
+.footer-grid h3{font-size:1.3rem;color:#fff;margin-bottom:12px;}
+.footer-grid h4{font-size:1rem;color:#D4AF37;margin-bottom:14px;}
+.footer-grid p{color:rgba(255,255,255,0.6);font-size:0.88rem;margin-bottom:6px;}
+.footer-grid ul{list-style:none;}
+.footer-grid ul li a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.88rem;transition:0.3s;display:block;margin-bottom:8px;}
+.footer-grid ul li a:hover{color:#D4AF37;}
+.footer-bottom{text-align:center;padding-top:20px;color:rgba(255,255,255,0.4);font-size:0.85rem;}
+@media(max-width:900px){.contacto-grid{grid-template-columns:1fr;}}
+@media(max-width:768px){header{flex-direction:column;text-align:center;padding:16px 20px;}nav{margin-top:12px;}nav a{margin:4px 6px;font-size:0.82rem;}.form-row{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;}}
+</style>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Administrativo — SaúdeMoç</title>
+</head>
+<body>
+
+<header>
+  <div class="logo">🏥 SaúdeMoç — Admin</div>
+  <nav>
+    <a href="index.html">← Voltar ao Site</a>
+    <a href="#" id="btnSair" style="display:none;">Sair</a>
+  </nav>
+</header>
+
+<!-- LOGIN -->
+<section id="login-area" class="login-secao">
+  <div class="login-card">
+    <h2>🔒 Acesso Restrito</h2>
+    <p>Introduza a senha de administrador para ver as mensagens recebidas.</p>
+    <input type="password" id="senhaInput" placeholder="Senha de administrador">
+    <button class="botao-submit" onclick="entrar()">Entrar</button>
+    <p id="erroLogin" style="color:#c0392b;display:none;margin-top:10px;">Senha incorreta.</p>
+  </div>
+</section>
+
+<!-- PAINEL -->
+<section id="painel-area" class="painel-secao" style="display:none;">
+  <h1>📬 Mensagens Recebidas</h1>
+  <p class="subtitulo">Lista de mensagens enviadas através do formulário de contactos.</p>
+
+  <div id="lista-mensagens" class="lista-mensagens">
+    <p id="carregando">A carregar mensagens...</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom"><p>© 2025 SaúdeMoç — Painel Administrativo</p></div>
+</footer>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, getDocs, doc, updateDoc, deleteDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDvghmOO4iX6SXHDK4TGOfal8flLrvtGW0",
+  authDomain: "saudemoc-2a45e.firebaseapp.com",
+  projectId: "saudemoc-2a45e",
+  storageBucket: "saudemoc-2a45e.firebasestorage.app",
+  messagingSenderId: "337640637165",
+  appId: "1:337640637165:web:ccf986eb5582f05fa002e4"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// SENHA DE ADMINISTRADOR — pode mudar este valor
+const SENHA_ADMIN = "saudemoc2026";
+
+window.entrar = function() {
+  const valor = document.getElementById('senhaInput').value;
+  if (valor === SENHA_ADMIN) {
+    document.getElementById('login-area').style.display = 'none';
+    document.getElementById('painel-area').style.display = 'block';
+    document.getElementById('btnSair').style.display = 'inline';
+    sessionStorage.setItem('admin_logado', 'sim');
+    carregarMensagens();
+  } else {
+    document.getElementById('erroLogin').style.display = 'block';
+  }
+}
+
+document.getElementById('btnSair').addEventListener('click', function(e){
+  e.preventDefault();
+  sessionStorage.removeItem('admin_logado');
+  location.reload();
+});
+
+// Se já está logado nesta sessão do navegador
+if (sessionStorage.getItem('admin_logado') === 'sim') {
+  document.getElementById('login-area').style.display = 'none';
+  document.getElementById('painel-area').style.display = 'block';
+  document.getElementById('btnSair').style.display = 'inline';
+  carregarMensagens();
+}
+
+// Permitir Enter no campo de senha
+document.getElementById('senhaInput').addEventListener('keypress', function(e){
+  if (e.key === 'Enter') window.entrar();
+});
+
+async function carregarMensagens() {
+  const container = document.getElementById('lista-mensagens');
+  container.innerHTML = '<p>A carregar mensagens...</p>';
+
+  try {
+    const q = query(collection(db, "contactos"), orderBy("criadoEm", "desc"));
+    const snapshot = await getDocs(q);
+
+    if (snapshot.empty) {
+      container.innerHTML = '<p class="vazio">Ainda não há mensagens recebidas.</p>';
+      return;
+    }
+
+    container.innerHTML = '';
+    snapshot.forEach((docSnap) => {
+      const m = docSnap.data();
+      const id = docSnap.id;
+      const data = m.criadoEm && m.criadoEm.toDate ? m.criadoEm.toDate().toLocaleString('pt-MZ') : '—';
+
+      const card = document.createElement('div');
+      card.className = 'msg-card' + (m.lido ? ' lida' : ' nao-lida');
+      card.innerHTML = `
+        <div class="msg-topo">
+          <div>
+            <strong>${escapeHtml(m.nome || '')}</strong>
+            ${m.lido ? '' : '<span class="badge-novo">NOVA</span>'}
+          </div>
+          <span class="msg-data">${data}</span>
+        </div>
+        <div class="msg-info">
+          <span>✉️ ${escapeHtml(m.email || '')}</span>
+          ${m.telefone ? `<span>📞 ${escapeHtml(m.telefone)}</span>` : ''}
+          ${m.provincia ? `<span>📍 ${escapeHtml(m.provincia)}</span>` : ''}
+          ${m.assunto ? `<span>🏷️ ${escapeHtml(m.assunto)}</span>` : ''}
+        </div>
+        <p class="msg-texto">${escapeHtml(m.mensagem || '')}</p>
+        <div class="msg-acoes">
+          ${m.lido ? '' : `<button class="botao-acao marcar" data-id="${id}">✅ Marcar como lida</button>`}
+          <button class="botao-acao apagar" data-id="${id}">🗑️ Apagar</button>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+
+    // Ações: marcar como lida
+    container.querySelectorAll('.marcar').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        await updateDoc(doc(db, "contactos", btn.dataset.id), { lido: true });
+        carregarMensagens();
+      });
+    });
+
+    // Ações: apagar
+    container.querySelectorAll('.apagar').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        if (confirm('Tem certeza que deseja apagar esta mensagem?')) {
+          await deleteDoc(doc(db, "contactos", btn.dataset.id));
+          carregarMensagens();
+        }
+      });
+    });
+
+  } catch (err) {
+    container.innerHTML = `<p style="color:#c0392b;">Erro ao carregar mensagens: ${err.message}</p>`;
+  }
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{background:#f4f6f9;color:#333;line-height:1.7;min-height:100vh;display:flex;flex-direction:column;}
+header{background:linear-gradient(135deg,#006B3F,#004a2b);padding:18px 50px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;box-shadow:0 4px 15px rgba(0,0,0,0.2);}
+.logo{font-size:1.4rem;font-weight:800;color:#fff;}
+nav a{color:rgba(255,255,255,0.85);text-decoration:none;margin-left:16px;font-weight:600;font-size:0.9rem;padding:6px 14px;border-radius:20px;transition:0.3s;}
+nav a:hover{color:#fff;background:rgba(212,175,55,0.25);}
+
+/* LOGIN */
+.login-secao{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px;}
+.login-card{background:#fff;border-radius:24px;padding:40px;box-shadow:0 12px 50px rgba(0,107,63,0.12);max-width:400px;width:100%;text-align:center;}
+.login-card h2{color:#004a2b;margin-bottom:10px;}
+.login-card p{color:#666;font-size:0.92rem;margin-bottom:20px;}
+.login-card input{width:100%;padding:13px 16px;border:2px solid #e8f5ed;border-radius:12px;font-size:0.95rem;margin-bottom:16px;outline:none;}
+.login-card input:focus{border-color:#006B3F;}
+.botao-submit{background:linear-gradient(135deg,#006B3F,#004a2b);color:#fff;border:none;padding:14px 30px;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;width:100%;transition:0.3s;}
+.botao-submit:hover{background:linear-gradient(135deg,#004a2b,#003520);}
+
+/* PAINEL */
+.painel-secao{flex:1;padding:40px 8%;}
+.painel-secao h1{color:#004a2b;font-weight:800;margin-bottom:8px;}
+.subtitulo{color:#666;margin-bottom:30px;}
+.lista-mensagens{display:flex;flex-direction:column;gap:16px;max-width:900px;margin:0 auto;}
+.vazio{text-align:center;color:#888;padding:40px;}
+.msg-card{background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,107,63,0.08);border-left:5px solid #e0e0e0;}
+.msg-card.nao-lida{border-left-color:#D4AF37;}
+.msg-topo{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+.msg-topo strong{color:#004a2b;font-size:1.1rem;}
+.badge-novo{background:#D4AF37;color:#1a3a00;font-size:0.7rem;font-weight:800;padding:3px 10px;border-radius:12px;margin-left:8px;}
+.msg-data{color:#999;font-size:0.82rem;}
+.msg-info{display:flex;gap:16px;flex-wrap:wrap;color:#666;font-size:0.85rem;margin-bottom:12px;}
+.msg-texto{color:#333;font-size:0.95rem;background:#f4f6f9;padding:14px;border-radius:10px;margin-bottom:12px;}
+.msg-acoes{display:flex;gap:10px;flex-wrap:wrap;}
+.botao-acao{border:none;padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;transition:0.3s;}
+.botao-acao.marcar{background:#e8f5ed;color:#006B3F;}
+.botao-acao.marcar:hover{background:#006B3F;color:#fff;}
+.botao-acao.apagar{background:#fdecea;color:#c0392b;}
+.botao-acao.apagar:hover{background:#c0392b;color:#fff;}
+
+footer{background:linear-gradient(135deg,#001a0f,#002d1a);color:#fff;padding:20px 8%;text-align:center;}
+.footer-bottom p{color:rgba(255,255,255,0.5);font-size:0.85rem;}
+
+@media(max-width:768px){header{flex-direction:column;text-align:center;padding:16px 20px;}nav{margin-top:12px;}}
+</style>
+
+</body>
+</html>
